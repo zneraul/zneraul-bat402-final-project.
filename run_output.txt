@@ -1,0 +1,142 @@
+[1] 1034    9
+                       Game Year            Genre       Publisher NorthAmerica
+1        Grand Theft Auto V 2014           Action  Rockstar Games         6.06
+2 Call of Duty: Black Ops 3 2015          Shooter      Activision         6.18
+3     Red Dead Redemption 2 2018 Action-Adventure  Rockstar Games         5.26
+4        Call of Duty: WWII 2017          Shooter      Activision         4.67
+5                   FIFA 18 2017           Sports       EA Sports         1.27
+6                   FIFA 17 2016           Sports Electronic Arts         1.26
+  Europe Japan RestofWorld Global
+1   9.71  0.60        3.02  19.39
+2   6.05  0.41        2.44  15.09
+3   6.21  0.21        2.26  13.94
+4   6.21  0.40        2.12  13.40
+5   8.64  0.15        1.73  11.80
+6   7.95  0.12        1.61  10.94
+'data.frame':	1034 obs. of  9 variables:
+ $ Game        : Factor w/ 1031 levels ".hack//G.U. Last Recode",..: 349 130 674 134 298 297 944 777 132 282 ...
+ $ Year        : Factor w/ 9 levels "2013","2014",..: 2 3 6 5 5 4 4 6 4 3 ...
+ $ Genre       : Factor w/ 17 levels "Action","Action-Adventure",..: 1 13 2 13 15 15 1 2 13 12 ...
+ $ Publisher   : Factor w/ 153 levels "","2K Games",..: 111 10 111 10 43 44 117 117 10 21 ...
+ $ NorthAmerica: num  6.06 6.18 5.26 4.67 1.27 1.26 4.49 3.64 3.11 2.91 ...
+ $ Europe      : num  9.71 6.05 6.21 6.21 8.64 7.95 3.93 3.39 3.83 3.97 ...
+ $ Japan       : num  0.6 0.41 0.21 0.4 0.15 0.12 0.21 0.32 0.19 0.27 ...
+ $ RestofWorld : num  3.02 2.44 2.26 2.12 1.73 1.61 1.7 1.41 1.36 1.34 ...
+ $ Global      : num  19.4 15.1 13.9 13.4 11.8 ...
+                      Game           Year              Genre    
+ Apotheon               :   2   2017   :254   Action      :258  
+ Biomutant              :   2   2016   :222   Misc        :123  
+ War Thunder            :   2   N/A    :209   Role-Playing:123  
+ .hack//G.U. Last Recode:   1   2015   :172   Adventure   : 97  
+ #killallzombies        :   1   2014   : 98   Shooter     : 89  
+ 7 Days to Die          :   1   2018   : 39   Sports      : 71  
+ (Other)                :1025   (Other): 40   (Other)     :273  
+                          Publisher    NorthAmerica        Europe      
+                               :209   Min.   :0.0000   Min.   :0.0000  
+ Namco Bandai Games            : 56   1st Qu.:0.0000   1st Qu.:0.0000  
+ Sony Interactive Entertainment: 47   Median :0.0200   Median :0.0000  
+ Ubisoft                       : 45   Mean   :0.2046   Mean   :0.2487  
+ Square Enix                   : 40   3rd Qu.:0.1200   3rd Qu.:0.1300  
+ Tecmo Koei                    : 37   Max.   :6.1800   Max.   :9.7100  
+ (Other)                       :600                                    
+     Japan          RestofWorld          Global       
+ Min.   :0.00000   Min.   :0.00000   Min.   : 0.0000  
+ 1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.: 0.0000  
+ Median :0.00000   Median :0.01000   Median : 0.0600  
+ Mean   :0.03364   Mean   :0.08901   Mean   : 0.5761  
+ 3rd Qu.:0.03000   3rd Qu.:0.05000   3rd Qu.: 0.3575  
+ Max.   :2.17000   Max.   :3.02000   Max.   :19.3900  
+                                                      
+        Game         Year        Genre    Publisher NorthAmerica       Europe 
+           0            0            0            0            0            0 
+       Japan  RestofWorld       Global 
+           0            0            0 
+[1] 0
+[1] 3
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.0000  0.0600  0.5761  0.3575 19.3900 
+[1] 2
+[1] 322
+[1] 209
+[1] 209
+[1] 2
+Rows removed for missing outcome: 321  Remaining rows: 710 
+Rows with blank publisher imputed with: Namco Bandai Games ( 57 games total )
+[1] 710   9
+Major publishers (25+ games): 8 
+
+Major Other 
+  286   424 
+
+Launch (2013-2014)   Peak (2015-2016)   Late (2017-2020) 
+                94                341                275 
+
+          Action Action-Adventure        Adventure         Fighting 
+             172               35               59               33 
+            Misc            Other         Platform           Racing 
+              27               61               27               46 
+    Role-Playing          Shooter           Sports         Strategy 
+              94               71               63               22 
+Train rows: 568  Test rows: 142 
+
+Call:
+lm(formula = Global ~ NorthAmerica + LifecyclePhase + GenreGroup + 
+    PublisherTier, data = train)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.5481 -0.1393 -0.0471  0.0536  5.4416 
+
+Coefficients:
+                                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                     0.235159   0.075035   3.134  0.00182 ** 
+NorthAmerica                    2.483636   0.034597  71.788  < 2e-16 ***
+LifecyclePhasePeak (2015-2016) -0.127254   0.066326  -1.919  0.05555 .  
+LifecyclePhaseLate (2017-2020) -0.170583   0.068537  -2.489  0.01311 *  
+GenreGroupAction-Adventure      0.087170   0.100395   0.868  0.38563    
+GenreGroupAdventure             0.002492   0.083563   0.030  0.97622    
+GenreGroupFighting             -0.123695   0.104297  -1.186  0.23614    
+GenreGroupMisc                  0.069326   0.120036   0.578  0.56380    
+GenreGroupOther                -0.019902   0.085303  -0.233  0.81561    
+GenreGroupPlatform              0.083142   0.108208   0.768  0.44261    
+GenreGroupRacing                0.206011   0.089959   2.290  0.02239 *  
+GenreGroupRole-Playing          0.050209   0.071040   0.707  0.48001    
+GenreGroupShooter               0.005177   0.079421   0.065  0.94805    
+GenreGroupSports               -0.120417   0.084004  -1.433  0.15229    
+GenreGroupStrategy             -0.053602   0.112942  -0.475  0.63527    
+PublisherTierOther             -0.065307   0.044772  -1.459  0.14523    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4871 on 552 degrees of freedom
+Multiple R-squared:  0.9137,	Adjusted R-squared:  0.9114 
+F-statistic: 389.8 on 15 and 552 DF,  p-value: < 2.2e-16
+
+Test RMSE: 1.133 million units
+RMSE as % of mean test sales: 112.6 %
+Test R-squared: 0.8 
+Mean test sales: 1.006 million units
+RMSE for games under 1M units: 0.164 on 116 of 142 test games
+Train RMSE: 0.48  Test RMSE: 1.133  Gap: 0.653 
+Fold 1 RMSE: 0.418 
+Fold 2 RMSE: 0.501 
+Fold 3 RMSE: 0.542 
+Fold 4 RMSE: 0.373 
+Fold 5 RMSE: 0.63 
+Average 5-fold RMSE: 0.493 vs single-split test RMSE: 1.133 
+                         Game Predicted
+1   0.30M NA, Major publisher 0.8096665
+2   0.30M NA, Small publisher 0.7443599
+3 0.30M NA, Major, Peak years 0.8529957
+4   1.00M NA, Major publisher 2.5482116
+Simulated mean forecast: 0.805 million units
+5th percentile: 0  95th percentile: 1.708 
+P(global below 0.30M): 0.189 
+pdf 
+  2 
+pdf 
+  2 
+pdf 
+  2 
+pdf 
+  2 
